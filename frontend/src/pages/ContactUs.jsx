@@ -1,0 +1,120 @@
+import React, {useEffect, useRef} from 'react'
+import {useForm} from "react-hook-form"
+
+function ContactUs() {
+    const {register, handleSubmit, formState: {errors}} = useForm();
+    const textareaRef = useRef(null);
+
+    const autoResize = () => {
+      const textarea = textareaRef.current;
+      if (textarea) {
+        textarea.style.height = "auto"; // reset
+        textarea.style.height = textarea.scrollHeight + "px"; // set to content height
+      }
+    };
+
+    useEffect(() => {
+      autoResize(); // adjust on first render if default value exists
+    }, []);
+
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+    
+  return (
+    <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-20 px-28 bg-gradient-to-r">
+        <div className='flex flex-col gap-y-2 items-center md:items-start text-center md:text-left'>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          Contact Us
+          </h2>
+          <p className="text-lg md:text-xl mb-6 max-w-2xl text-gray-400 font-semibold">
+            Need to get in touch with us? Either fill out the inquiry form or contact us directly through our company mail id abc@gmail.com
+          </p>
+        </div>
+        <div className='flex justify-center'>
+          <form onSubmit={handleSubmit(onSubmit)} className='outline-1 p-10 pb-8 rounded-lg'>
+            {/* <p className='flex justify-center items-center pb-5 font-semibold underline text-xl'>Inquiry Form</p> */}
+            <div className='space-y-1'>
+              <div className='flex gap-15'>
+                <div className="grid gap-1">
+                    <label htmlFor="firstName" className='text-left text-shadow-2xl'>First Name: </label>
+                    <input
+                        id="firstName"
+                        type="text" 
+                        className='border border-gray-300 rounded p-2 shadow-md' 
+                        placeholder="Enter your first name" 
+                        {...register("firstName", {
+                          required: true
+                        })}
+                    />
+                </div>
+                <div className="grid gap-1">
+                    <label htmlFor="lastName" className='text-left text-shadow-2xl'>Last Name: </label>
+                    <input
+                        id="lastName"
+                        type="text" 
+                        className='border border-gray-300 rounded p-2 shadow-md' 
+                        placeholder="Enter your last name" 
+                        {...register("lastName", {
+                          required: true
+                        })}
+                    />
+                </div>
+              </div>
+                
+              <div className="grid gap-1">
+                  <label htmlFor="email" className='text-left mt-7 text-shadow-2xl'>Email: </label>
+                  <input
+                      id="email"
+                      type="email"
+                      className='border border-gray-300 rounded p-2 shadow-md'
+                      placeholder="Enter your email"
+                      {...register("email", {
+                        required: true,
+                        validate: {
+                            matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "Email address must be a valid address",
+                          }
+                      })}
+                  />
+                  {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
+              </div>
+              <div className="grid gap-1">
+                  <label htmlFor="phone" className='text-left mt-7 text-shadow-2xl'>Phone Number: </label>
+                  <input
+                      id="phone"
+                      type="tel" 
+                      className='border border-gray-300 rounded p-2 shadow-md' 
+                      placeholder="Enter your phone number" 
+                      {...register("phone", {
+                        required: true,
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: "Phone number must be 10 digits"
+                        }
+                      })}
+                  />
+                  {errors.phone && <span className="text-red-500 text-sm">{errors.phone.message}</span>}
+              </div>
+              <div className="grid gap-1">
+                  <label htmlFor="query" className='text-left mt-7 text-shadow-2xl'>What's your query? </label>
+                  <textarea
+                      id="query"
+                      onInput={autoResize}
+                      ref={textareaRef}
+                      className='border border-gray-300 rounded p-2 shadow-md'
+                      placeholder='Ask anything'
+                      {...register("query")}
+                  />
+              </div>
+              <div className='flex justify-center items-center mt-8'>
+                <button className='p-3.5 text-white font-semibold rounded-lg hover:bg-blue-600 bg-blue-400'>Submit</button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </section>
+  )
+}
+
+export default ContactUs
