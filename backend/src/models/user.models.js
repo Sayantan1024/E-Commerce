@@ -14,10 +14,12 @@ const userSchema = new Schema(
             unique: true,
             lowercase: true,
             trim: true,
+            // required: true
         },
         address: {
             type: String,
-            trim: true
+            trim: true,
+            // required: true
         },
         phone: {
             type: Number,
