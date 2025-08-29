@@ -14,7 +14,7 @@ const userSchema = new Schema(
             unique: true,
             lowercase: true,
             trim: true,
-            // required: true
+            required: true
         },
         address: {
             type: String,
@@ -41,7 +41,17 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: "Product"
             }
-        ]
+        ],
+        // otp: {
+        //     type: String
+        // },
+        // otpExpires: {
+        //     type: Date
+        // },
+        isVerified: {
+            type: Boolean,
+            default: false
+        }
     }, 
     {timestamps: true}
 )

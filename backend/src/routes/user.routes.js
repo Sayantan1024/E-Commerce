@@ -1,10 +1,11 @@
 import {Router} from "express";
 import {verifyJWT} from "../middlewares/auth.middleware.js";
-import { loginClient, registerCustomer } from "../controllers/user.controllers.js";
+import { loginClient, sendOtpToCustomer, verifyOtpAndRegisterCustomer } from "../controllers/user.controllers.js";
 
 const router = Router();
 
-router.route("/register-customer").post(registerCustomer)
+router.route("/send-otp").post(sendOtpToCustomer)
+router.route("/register-customer").post(verifyOtpAndRegisterCustomer)
 router.route("/login-client").post(loginClient)
 
 export default router
