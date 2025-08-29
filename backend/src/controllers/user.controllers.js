@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { User } from "../models/user.models.js";
+import { Otp } from "../models/otp.models.js";
+import nodemailer from "nodemailer"
 
 const generateAccessAndRefreshToken = async (clientId) => {
     try {
@@ -18,26 +20,75 @@ const generateAccessAndRefreshToken = async (clientId) => {
     }
 }
 
-const registerCustomer = asyncHandler( async (req, res) => {
-    const {username, email, address, phone} = req.body
+const sendOtpToCustomer = asyncHandler( async (req, res) => {
+    const {email} = req.body
 
-    if(!username || !phone)
-        throw new ApiError(400, "All fields are required")
+    if(!email)
+        throw new ApiError(400, "Email is required")
 
-    const existedCustomer = await User.findOne({
-        $and: [{username}, {phone}]
+    const existingUser = await User.findOne({ email });
+    if (existingUser) throw new ApiError(409, "Email already registered");
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const sessionToken = crypto.randomBytes(16).toString("hex");
+    const expiresAt = Date.now() + 5*60*1000
+
+    const otpSession = await Otp.findOneAndUpdate(
+        { email },
+        { otp, sessionToken, expiresAt },
+        { upsert: true, new: true }
+    );
+
+    if(!otpSession)
+        throw new ApiError(404, "Error in creating otp session")
+    
+    const transporter = nodemailer.createTransport({
+        secure: true,
+        service: "gmail",
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD
+        }
     })
 
-    if(existedCustomer)
-        throw new ApiError(409, "Customer already exists")
+    await transporter.sendMail({
+        from: `Your App Support ${process.env.EMAIL_USER}`,
+        to: email,
+        subject: "Your OTP code",
+        text: `Your OTP code is: ${otp}. It will expire in 5 minutes`,
+        html: `<p>Your OTP code is: <b>${otp}</b></p><p>This code will expire in 5 minutes.</p>`
+    })
+
+    res.status(200).json({
+        message: "OTP sent to mail",
+        sessionToken
+    })
+})
+
+const verifyOtpAndRegisterCustomer = asyncHandler( async(req, res) => {
+    const {otp, sessionToken, username, address, phone} = req.body
+
+    if(!username || !address || !phone)
+        throw new ApiError(400, "All fields are required")
+
+    const otpSession = await Otp.findOne({sessionToken})
+    if(!otpSession || otpSession.expiresAt<Date.now())
+        throw new ApiError(400, "Session/OTP expired")
+
+    if(otpSession.otp !== otp)
+        throw new ApiError(400, "Invalid verification")
 
     const customer = await User.create({
         username: username.toLowerCase(),
-        email,
+        email: otpSession.email,
         address,
         phone,
-        role: "customer"
+        role: "customer",
+        isVerified: true
     })
+
+    //for leftover cleanup
+    await Otp.deleteOne({ sessionToken });
 
     const createdCustomer = await User.findById(customer._id).select("-address -phone")
 
@@ -117,4 +168,10 @@ const loginClient = asyncHandler( async (req, res) => {
     )
 })
 
-export {registerCustomer, registerClient, loginClient}
+// const getDashboardForClient = asyncHandler( async (req, res) => {
+
+// })
+
+
+
+export {sendOtpToCustomer, loginClient, verifyOtpAndRegisterCustomer}
