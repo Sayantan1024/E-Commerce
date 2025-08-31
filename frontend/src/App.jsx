@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import './App.css'
-import ContactUs from './pages/ContactUs'
+import React from "react";
+import { ProfileProvider } from "./context/ProfileContext";
+import Landing from "./pages/Landing";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <ContactUs />
-    </>
-  )
+    <ProfileProvider>
+      <Landing />
+    </ProfileProvider>
+  );
 }
-
-export default App
