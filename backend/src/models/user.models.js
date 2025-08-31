@@ -42,12 +42,6 @@ const userSchema = new Schema(
                 ref: "Product"
             }
         ],
-        // otp: {
-        //     type: String
-        // },
-        // otpExpires: {
-        //     type: Date
-        // },
         isVerified: {
             type: Boolean,
             default: false

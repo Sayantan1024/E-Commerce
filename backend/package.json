@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "seed:products": "nodemon src/seed/productSeeder.js",
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
   "author": "Sayantan",
@@ -19,6 +20,7 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.18.0"
+    "mongoose": "^8.18.0",
+    "nodemailer": "^7.0.6"
   }
 }
