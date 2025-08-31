@@ -7,7 +7,7 @@ const productSchema = new Schema(
             required: true
         },
         features: {
-            type: String
+            type: [String]
         },
         category: {
             type: String
@@ -16,9 +16,9 @@ const productSchema = new Schema(
             type: Number,
             required: true
         },
-        picture: {
-            type: String
-        }
+        // picture: {
+        //     type: String
+        // }
     }, 
     {timestamps: true}
 )
