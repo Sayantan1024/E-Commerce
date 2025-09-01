@@ -1,7 +1,5 @@
 // src/pages/Home.jsx
 import React, { useState } from "react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
 import PopularProduct from "../components/popular/PopularProduct";
 import VideoDemo from "../components/demo/VideoDemo";
 import ReviewsCarousel from "../components/reviews/ReviewsCarousel";
@@ -37,7 +35,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 ">
-      <Navbar onToggleProfile={() => setShowProfile((s) => !s)} showProfile={showProfile} />
 
       <main className="container mx-auto  py-8 flex-1 px-6 md:px-16 lg:px-37">
         {/* Popular product (hero) */}
@@ -69,9 +66,6 @@ export default function Home() {
           </section>
         )}
       </main>
-
-      {/* Footer component (replaces inline footer) */}
-      <Footer />
 
       {openModal && (
         <WishlistModal
