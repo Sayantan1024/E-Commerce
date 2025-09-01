@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar({ onToggleProfile, showProfile }) {
   return (
@@ -14,10 +15,41 @@ export default function Navbar({ onToggleProfile, showProfile }) {
 
         {/* Center Navigation */}
         <nav className="hidden md:flex gap-8 text-gray-700">
-          <a className="hover:text-green-600" href="#">Home</a>
-          <a className="hover:text-green-600" href="#">Products</a>
-          <a className="hover:text-green-600" href="#">Contact Us</a>
-          <a className="hover:text-green-600" href="#">Create Profile</a>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+            }
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+            }
+          >
+            Products
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+            }
+          >
+            Contact Us
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+            }
+          >
+            About Us
+          </NavLink>
         </nav>
 
         {/* Right Button */}

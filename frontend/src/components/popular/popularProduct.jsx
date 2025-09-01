@@ -31,7 +31,7 @@ export default function PopularProduct({ onGetProduct }) {
 
         <div className="md:w-56 md:h-56 mt-6 md:mt-0 flex items-center justify-center">
           <div className="w-56 h-56 bg-gradient-to-tr from-green-200 to-green-400 rounded-lg flex items-center justify-center text-white text-lg font-semibold">
-            <img src="/assets/product-photo.jpg" alt="Product" className="w-full h-full object-cover rounded-lg" />
+            <img src="/assets/product-photo.jpg" alt="Product" className="w-full h-full object-cover rounded-lg " />
           </div>
         </div>
       </div>
