@@ -19,3 +19,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.slick-slide > div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

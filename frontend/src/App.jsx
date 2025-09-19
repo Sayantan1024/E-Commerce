@@ -5,6 +5,7 @@ import { ProfileProvider } from "./context/ProfileContext";
 // Pages
 import Landing from "./pages/Landing";
 import Products from "./pages/Products";
+import ContactUs from "./pages/ContactUs";
 
 // Layout
 import Navbar from "./components/Layout/Navbar";
@@ -23,6 +24,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/contact" element={<ContactUs />} />
             </Routes>
           </main>
 
