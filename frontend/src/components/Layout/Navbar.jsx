@@ -42,14 +42,14 @@ export default function Navbar({ onToggleProfile, showProfile }) {
             Contact Us
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/about"
             className={({ isActive }) =>
               isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
             }
           >
             About Us
-          </NavLink>
+          </NavLink> */}
         </nav>
 
         {/* Right Button */}

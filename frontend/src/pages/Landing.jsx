@@ -7,6 +7,7 @@ import WishlistModal from "../components/profile/WishlistModal";
 import ProfileInfo from "../components/profile/ProfileInfo";
 import ProductsList from "../components/products/ProductsList";
 import { useProfile } from "../context/ProfileContext";
+import Feature from "../components/features/Feature";
 
 export default function Home() {
   const { userInfo, setUserInfo } = useProfile();
@@ -34,30 +35,34 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 ">
+    <div className="min-h-screen flex flex-col">
 
-      <main className="container mx-auto  py-8 flex-1 px-6 md:px-16 lg:px-37">
+      <main className="container mx-auto  py-8 flex-1 px-6 md:px-16">
         {/* Popular product (hero) */}
-        <section className="mb-10">
+        <section className="mb-2">
           <PopularProduct onGetProduct={() => requireInfoThen("Get Product")} />
         </section>
 
         {/* Products list (below the hero) */}
-        <section className="mb-10">
+        {/* <section className="mb-10">
           <h3 className="text-xl font-semibold mb-4">Products</h3>
           <ProductsList onWishlist={handleProductWishlist} />
-        </section>
+        </section> */}
 
         {/* Video + demo */}
         <section className="mb-10">
           <VideoDemo onGetDemo={() => requireInfoThen("Get Demo")} />
         </section>
 
-        {/* Reviews carousel */}
         <section className="mb-10">
+          <Feature />
+        </section>
+
+        {/* Reviews carousel */}
+        {/* <section className="mb-10">
           <h3 className="text-xl font-semibold mb-4">User Reviews</h3>
           <ReviewsCarousel />
-        </section>
+        </section> */}
 
         {/* Profile (toggled) */}
         {showProfile && (
