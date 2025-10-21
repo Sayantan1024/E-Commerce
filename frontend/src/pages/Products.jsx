@@ -242,7 +242,9 @@ export default function Products({ isLoggedIn }) {
             <p className="text-gray-500 text-muted-foreground mb-8">
               Our experts are here to help you select the right equipment for your specific needs.
             </p>
-            <button className="bg-gradient-to-r from-green-500 to-green-400 p-5 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:-translate-y-1 rounded-2xl text-white font-semibold cursor-pointer">
+            <button 
+            onClick={() => navigate("/contact")}
+            className="bg-gradient-to-r from-green-500 to-green-400 p-5 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:-translate-y-1 rounded-2xl text-white font-semibold cursor-pointer">
               Contact Our Experts
             </button>
           </div>
