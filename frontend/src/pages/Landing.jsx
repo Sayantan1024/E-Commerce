@@ -35,9 +35,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col dark:bg-black ">
 
-      <main className="container mx-auto  py-8 flex-1 px-6 md:px-16">
+      <main className="container mx-auto py-8 flex-1 px-6 md:px-16 mt-10">
         {/* Popular product (hero) */}
         <section className="mb-2">
           <PopularProduct onGetProduct={() => requireInfoThen("Get Product")} />

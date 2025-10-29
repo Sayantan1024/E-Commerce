@@ -19,12 +19,12 @@ export default function PopularProduct({ onGetProduct }) {
                 About Advance Telecom
               </span>
             </h1>
-            <p className="text-gray-700 text-lg text-muted-foreground leading-relaxed">
+            <p className="text-gray-700 text-lg text-muted-foreground leading-relaxed dark:text-white">
               We are the leading provider of professional fiber optic testing and splicing equipment.
               With over a decade of experience, we deliver precision-engineered solutions trusted by
               professionals worldwide for critical infrastructure projects.
             </p>
-            <p className="text-gray-700 text-lg text-muted-foreground leading-relaxed">
+            <p className="text-gray-700 text-lg text-muted-foreground leading-relaxed dark:text-white">
               Our commitment to quality, reliability, and innovation has made us the preferred choice
               for telecommunications companies, data centers, and network engineers across the globe.
             </p>
@@ -39,13 +39,13 @@ export default function PopularProduct({ onGetProduct }) {
 
           {/* Right Side - Product Image */}
           <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+            <CardBody className="bg-black relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-gray-100 dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
               <CardItem translateZ="100" className="w-full mt-4">
                 <img
                   src={DVP_765_1}
                   height="1000"
                   width="1000"
-                  className="w-full h-auto  object-cover rounded-xl group-hover/card:shadow-xl"
+                  className="w-full h-auto  object-cover rounded-xl border border-gray-300 group-hover/card:shadow-xl"
                   alt="thumbnail"
                 />
               </CardItem>
@@ -53,14 +53,14 @@ export default function PopularProduct({ onGetProduct }) {
                 <CardItem
                   translateZ={20}
                   target="__blank"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold dark:text-black text-white"
                 >
                   Check it out now →
                 </CardItem>
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold tracking-wider"
+                  className="px-4 py-2 rounded-xl bg-white dark:bg-black dark:text-white text-black text-xs font-bold tracking-wider"
                 >
                   BestSeller
                 </CardItem>
