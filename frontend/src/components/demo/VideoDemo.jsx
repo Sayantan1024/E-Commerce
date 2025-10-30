@@ -1,4 +1,5 @@
 import React from "react";
+import Demo from "../../assets/Demo.mp4"
 
 export default function VideoDemo({ onGetDemo }) {
   return (
@@ -19,7 +20,7 @@ export default function VideoDemo({ onGetDemo }) {
             <video
               controls
               className="w-full h-full object-cover rounded-3xl"
-              src=""
+              src={Demo}
             >
               Your browser does not support the video tag.
             </video>

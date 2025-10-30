@@ -5,58 +5,66 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import SAT_17T_1 from "../assets/SAT_17T_1.jpeg"
-import SAT_17T_2 from "../assets/SAT_17T_2.jpeg"
+import SAT_17T_2 from "../assets/SAT_17T_2.jpg"
 import DVP_765_1 from "../assets/DVP_765_1.jpeg"
 import DVP_765_2 from "../assets/DVP_765_2.jpeg"
+import DVP_740D_1 from "../assets/DVP_740D_1.webp"
+import DVP_740D_2 from "../assets/DVP_740D_2.webp"
+import SAT_17K_1 from "../assets/SAT_17K_1.jpg"
+import SAT_17K_2 from "../assets/SAT_17K_2.jpg"
+import OPM from "../assets/OPM.jpg"
+import VFL from "../assets/VFL.jpg"
+import OPM_with_VFL_1 from "../assets/OPM_with_VFL_1.jpg"
+import OPM_with_VFL_2 from "../assets/OPM_with_VFL_2.jpg"
+import Siti_62 from "../assets/Siti_62.jpg"
 import "../index.css"
 
 const categories = [
   { id: "splicing-machines", name: "Splicing Machines" },
-  { id: "otdr-devices", name: "OTDR Devices" },
-  { id: "power-meters", name: "Power Meters" },
-  { id: "cleaving-tools", name: "Cleaving Tools" },
+  { id: "otdr-devices", name: "OTDR Device" },
+  { id: "power-meters", name: "Power Meter & VFL" },
+  { id: "cleaving-tool", name: "Cleaver" },
 ];
 
 const products = {
   "splicing-machines": [
     {
       id: 1,
-      name: "SAT-17T",
+      name: "Aitelong-17T",
       description:
         "A high-precision fusion splicer designed for fast and reliable fiber optic splicing. It features an intuitive touch interface, quick splice time, and excellent alignment accuracy for field or lab use.",
-      features: ["Feature 1", "Feature 2", "Feature 3"],
+      features: ["Extremely low splice loss", "Battery 7800 mAh (250 splice with single charge)", "Works smoothly even in dusty areas"],
       price: "₹1,40,000",
       images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
 
     },
     {
       id: 2,
+      name: "Aitelong-17K",
+      description:
+        "The Aitelong-17K combines portability with advanced splicing technology, perfect for technicians who need accuracy and endurance in the field.",
+      features: ["Extremely low splice loss", "Built in Power meter and VFL", "Battery 5200 mAh (170 splice with single charge)"],
+      price: "₹1,00,000",
+      images: [`${SAT_17K_1}`, `${SAT_17K_2}`]
+    },
+    {
+      id: 3,
       name: "DVP-765",
       description:
         "Delivers stable and efficient core alignment splicing with a compact and rugged design. Ensures consistent splice quality with fast heating and user-friendly operation for professionals.",
-      features: ["Feature 1", "Feature 2", "Feature 3"],
+      features: ["Excellent in splitter joining", "Extremely powerful motors", "Battery 5200 mAh (170 splice with single charge)"],
       price: "₹1,15,000",
       images: [`${DVP_765_1}`, `${DVP_765_2}`]
     },
     {
-      id: 3,
-      name: "DVP-704D",
+      id: 4,
+      name: "DVP-740D",
       description:
         "A durable and cost-effective splicing solution, this offers precise alignment and quick splice cycles. Ideal for maintenance and installation projects requiring dependable performance",
-      features: ["Feature 1", "Feature 2", "Feature 3"],
-      price: "₹80,000",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
+      features: ["Excellent splitter joining", "Maintenance free operation", "Battery 5200 mAh (170 splice with single charge)"],
+      price: "₹90,000",
+      images: [`${DVP_740D_1}`, `${DVP_740D_2}`]
     },
-    {
-      id: 4,
-      name: "Aitelong-17K",
-      description:
-        "The Aitelong-17K combines portability with advanced splicing technology, perfect for technicians who need accuracy and endurance in the field.",
-      features: ["Splice time 11s", "Battery 7800mAh (approx 250 splice with single charge)", "Magnification 360"],
-      price: "₹1,00,000",
-      alignment: "Core-to-Core",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
-    }
   ],
   "otdr-devices": [
     {
@@ -64,7 +72,7 @@ const products = {
       name: "TT4500",
       description:
         "Compact and reliable optical testing device designed for accurate fiber link analysis, offering high-resolution trace results, fast measurement speeds, and an easy-to-use interface—ideal.",
-      features: ["Feature 1", "Feature 2", "Feature 3"],
+      features: ["Highly accurate", "Dynamic Range 26/24 dB", "Distance Range 100 km"],
       price: "₹25,000",
       images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
     }
@@ -77,7 +85,7 @@ const products = {
         "Compact and accurate device for measuring optical signal strength across multiple wavelengths. Ideal for fiber network installation, maintenance, and troubleshooting with reliable performance.",
       features: ["Power Range -50 to +26dbm", "Pencil Battery Operated"],
       price: "₹1,200",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
+      images: [`${OPM}`]
     },
     {
       id: 7,
@@ -86,7 +94,7 @@ const products = {
         "A handy pen-style tool to pinpoint fiber breaks, bends, or faults. Perfect for quick visual inspection and on-the-spot fiber testing in the field.",
       features: ["Power Range -50 to +26dbm", "Range 10km", "Pencil Battery Operated"],
       price: "₹500",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
+      images: [`${VFL}`]
     },
     {
       id: 8,
@@ -95,18 +103,17 @@ const products = {
         "A versatile 2-in-1 tool combining an Optical Power Meter and Visual Fault Locator for comprehensive fiber testing, ensures efficient measurement and fault detection in a single compact unit.",
       features: ["Power Range -50 to +26dbm", "VFL Range 6km"],
       price: "₹1,600",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
+      images: [`${OPM_with_VFL_1}`, `${OPM_with_VFL_2}`]
     }
   ],
-  "cleaving-tools": [
+  "cleaving-tool": [
     {
       id: 9,
-      name: "Siti-62",
       description:
         "High-precision fiber optic cleaver designed for effortless and accurate fiber preparation.",
       features: ["Auto Return", "Auto Rotating Blade", "Blade life 48000 cutting"],
-      price: "₹10,000",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
+      price: "₹4,800",
+      images: [`${Siti_62}`]
     }
   ]
 }
@@ -187,12 +194,8 @@ export default function Products({ isLoggedIn }) {
                         </div>
                         {/* Price Section */}
                         <p className="text-3xl font-bold bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent text-center mt-6">
-                          {product.id === 4 &&
-                            <span className="text-xl text-white">
-                              <button className="bg-fuchsia-600 border-3 border-purple-300 p-2 mr-6 rounded-lg">
-                                {product.alignment}
-                              </button>
-                            </span>}
+                          
+                            
                           {product.price}
                         </p>
                       </div>
@@ -215,7 +218,7 @@ export default function Products({ isLoggedIn }) {
                               {product.features.map((feature, index) => (
                                 <li
                                   key={index}
-                                  className="flex items-center text-muted-foreground dark:text-gray-400"
+                                  className="flex items-center text-muted-foreground dark:text-gray-300"
                                 >
                                   <div className="w-2 h-2 rounded-full bg-green-400 mr-3 flex-shrink-0" />
                                   {feature}

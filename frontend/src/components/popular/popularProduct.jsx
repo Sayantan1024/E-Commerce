@@ -1,5 +1,5 @@
 import React from "react";
-import DVP_765_1 from "../../assets/DVP_765_1.jpeg"
+import SAT_17T_1 from "../../assets/SAT_17T_1.jpeg"
 import { ArrowRight } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { CardContainer, CardBody, CardItem } from "../ui/3d-card";
@@ -42,7 +42,7 @@ export default function PopularProduct({ onGetProduct }) {
             <CardBody className="bg-black relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-gray-100 dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
               <CardItem translateZ="100" className="w-full mt-4">
                 <img
-                  src={DVP_765_1}
+                  src={SAT_17T_1}
                   height="1000"
                   width="1000"
                   className="w-full h-auto  object-cover rounded-xl border border-gray-300 group-hover/card:shadow-xl"

@@ -29,7 +29,7 @@ function Feature() {
           <Highlight className="text-black ">
             money back guarantee
           </Highlight>
-          {" "}Not satisfied with our product? No worries, return it and get your money back.
+          {" "}Not satisfied with our product? No worries, return it and get your full money back.
         </motion.h1>
       </HeroHighlight>
     </section>

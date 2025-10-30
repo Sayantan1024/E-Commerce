@@ -31,7 +31,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-gray-400">
             <li>
               <Link
-                className="hover:text-white"
+                className="hover:text-black dark:hover:text-white"
                 to='/'
               >
                 Home
@@ -39,7 +39,7 @@ export default function Footer() {
             </li>
             <li> 
               <Link
-                className="hover:text-white"
+                className="hover:text-black dark:hover:text-white"
                 to='/products'
               >
                 Products
@@ -47,7 +47,7 @@ export default function Footer() {
             </li>
             <li> 
               <Link
-                className="hover:text-white"
+                className="hover:text-black dark:hover:text-white"
                 to='/contact'
               >
                 Contact Us
@@ -60,17 +60,17 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold mb-3 text-black dark:text-white">Customer Support</h3>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-white">FAQs</a></li>
-            {/* <li><a href="#" className="hover:text-white">Shipping & Returns</a></li> */}
-            <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+            <li><a href="#" className="hover:text-black dark:hover:text-white">FAQs</a></li>
+            {/* <li><a href="#" className="hover:text-black dark:hover:text-white">Shipping & Returns</a></li> */}
+            <li><a href="#" className="hover:text-black dark:hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" className="hover:text-black dark:hover:text-white">Terms of Service</a></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
           <h3 className="font-semibold mb-3  text-black dark:text-white">Get in Touch</h3>
-          <p className="text-sm text-gray-400">📍 123 Market Street, City</p>
+          <p className="text-sm text-gray-400">📍 Anita Apartment, AB-57, Prafulla Kanan(W), Kolkata-700101</p>
           <p className="text-sm text-gray-400">📞 +91 9830581917</p>
           <p className="text-sm text-gray-400">📧 advancetelecom57@gmail.com</p>
         </div>

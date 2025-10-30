@@ -28,7 +28,7 @@ function ContactUs() {
           Contact Us
           </h2>
           <p className="text-lg md:text-xl mb-6 max-w-2xl text-gray-400 font-semibold">
-            Need to get in touch with us? Either fill out the inquiry form or contact us directly through our company mail id <span className='text-indigo-600'>advancetelecom57@gmail.com</span> or call us at <span className='text-indigo-600'>+91 9830581917</span>
+            Need to get in touch with us? Either fill out the inquiry form or contact us directly through our company mail id <span className='text-black dark:text-yellow-400 font-bold'>advancetelecom57@gmail.com</span> or call us at <span className='text-black dark:text-yellow-400 font-bold'>+91 9830581917</span>
           </p>
           <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d230.20748105994238!2d88.4230991137802!3d22.604533879909564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDM2JzE2LjQiTiA4OMKwMjUnMjMuNyJF!5e0!3m2!1sen!2sin!4v1760727991476!5m2!1sen!2sin" width="600" height="450"  allowfullscreen="" loading="lazy"referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
