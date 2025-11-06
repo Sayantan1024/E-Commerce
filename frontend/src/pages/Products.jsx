@@ -121,13 +121,13 @@ const products = {
 export default function Products({ isLoggedIn }) {
   const navigate = useNavigate();
 
-  const handleInterest = (productId) => {
-    if (!isLoggedIn) {
-      navigate("/login");
-    } else {
-      alert(`You showed interest in product ID: ${productId}`);
-    }
-  };
+  // const handleInterest = (productId) => {
+  //   if (!isLoggedIn) {
+  //     navigate("/login");
+  //   } else {
+  //     alert(`You showed interest in product ID: ${productId}`);
+  //   }
+  // };
 
   const settings = {
     dots: false,
@@ -142,7 +142,7 @@ export default function Products({ isLoggedIn }) {
 
   return (
     <div className="flex flex-col min-h-screen dark:bg-black">
-      <main className="flex-grow p-6 lg:px-20 mt-20">
+      <main className="flex-grow p-6 xl:px-20 lg:px-0 mt-20">
         <section className="relative py-20 px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-cyan-600 to-emerald-500 bg-clip-text text-transparent mb-6">
@@ -173,14 +173,14 @@ export default function Products({ isLoggedIn }) {
                   {products[category.id]?.map((product) => (
                     <div
                       key={product.id}
-                      className="p-6 grid grid-cols-1 md:grid-cols-3 gap-15"
+                      className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-15"
                     >
                       {/* Left - Image */}
                       <div className="flex flex-col items-center">
                         <div className="relative w-full max-w-md mx-auto">
                           <Slider {...settings}>
                             {product.images.map((imgSrc, index) => (
-                              <div key={index} className="outline-none">
+                              <div key={index} className="outline-none mt-lg-xl">
                                 <div className="aspect-square rounded-2xl overflow-hidden">
                                   <img
                                     src={imgSrc}
@@ -194,13 +194,11 @@ export default function Products({ isLoggedIn }) {
                         </div>
                         {/* Price Section */}
                         <p className="text-3xl font-bold bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent text-center mt-6">
-                          
-                            
                           {product.price}
                         </p>
                       </div>
                       {/* Right - Button */}
-                      <div className="xl:col-span-2 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black rounded-xl p-13 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-80 dark:border-gray-600 dark:hover:shadow-blue-300">
+                      <div className="md:col-span-2 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black rounded-xl p-13 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-80 dark:border-gray-600 dark:hover:shadow-blue-300">
                         <div className="flex-1 space-y-4">
                           <div>
                             <h3 className="text-3xl font-bold text-foreground mb-2 dark:text-white">
@@ -230,13 +228,13 @@ export default function Products({ isLoggedIn }) {
                         {/* Actions */}
                         <div className="flex flex-col gap-4 lg:min-w-[200px]">
                           <button
-                            onClick={() => handleInterest(product.id)}
+                            onClick={() => navigate('/contact')}
                             className="bg-gradient-to-r from-green-600 to-green-400 border dark:border-slate-700 dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] dark:text-slate-200 p-5 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:-translate-y-1 dark:hover:shadow-cyan-900 rounded-2xl text-white font-semibold cursor-pointer"
                           >
                             I'm Interested
                           </button>
                           <div className="text-center text-sm text-gray-500">
-                            {!isLoggedIn && "Login required to show interest"}
+                            {!isLoggedIn && "Contact required to show interest"}
                           </div>
                         </div>
                       </div>

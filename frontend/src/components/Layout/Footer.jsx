@@ -10,9 +10,9 @@ export default function Footer() {
         {/* Logo & Description */}
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold">
+            {/* <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold">
               S
-            </div>
+            </div> */}
             <div>
               <div className="font-semibold text-lg text-black dark:text-white">Advance Telecom</div>
               <div className="text-sm text-gray-400">

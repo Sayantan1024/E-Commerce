@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import useTheme from "../../context/Theme";
 import { Sun, Moon } from "lucide-react"
+import Light_logo from "../../assets/Light_logo.png"
+import Dark_logo from "../../assets/Dark_logo.png"
 
 export default function Navbar({ onToggleProfile, showProfile }) {
   const { themeMode, lightTheme, darkTheme } = useTheme()
@@ -16,9 +18,13 @@ export default function Navbar({ onToggleProfile, showProfile }) {
 
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold">
-            S
-          </div>
+            {themeMode === "light" ? 
+            <img 
+            className="h-10 w-28 md:h-8 md:w-22"
+            src={Light_logo} /> : 
+            <img 
+            className="h-10 w-28 md:h-8 md:w-22"
+            src={Dark_logo} />}
         </div>
 
         {/* Center Navigation */}

@@ -11,7 +11,7 @@ export default function PopularProduct({ onGetProduct }) {
     <section id="about" className="relative py-10 px-6 overflow-hidden">
       {/* <div className="absolute inset-0 " /> */}
       <div className="relative max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - About Us */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl font-bold">

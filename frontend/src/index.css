@@ -43,3 +43,9 @@ body {
     }
   }
 }
+
+@media (min-width:1024px) and (max-width:1280px) {
+  .mt-lg-xl {
+    margin-top: 80px;
+  }
+}
