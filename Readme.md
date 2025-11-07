@@ -42,6 +42,7 @@ This web application is a modern **MERN Stack**-based platform designed to act a
 ---
 
 ## 📂 Project Structure
+```bash
 E-Commerce/
 ├── frontend/ (React)
 │ ├── src/
@@ -68,7 +69,7 @@ E-Commerce/
 │ └── package.json
 |
 └── README.md
-
+```
 ---
 
 ### 🧑‍💻 Future Enhancements
@@ -82,5 +83,5 @@ E-Commerce/
 
 ### 🌍 Deployment
 
-• Frontend: Hosted on [Vercel](https://vercel.com)
+• Frontend: Hosted on [Vercel](https://advancetelecom.vercel.app/)
 • Backend: Deployment in progress (to be hosted on Render / Railway / AWS)
