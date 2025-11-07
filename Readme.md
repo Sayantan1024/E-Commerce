@@ -74,14 +74,14 @@ E-Commerce/
 
 ### 🧑‍💻 Future Enhancements
 
-• ✅ Backend restructuring and deployment to production.
-• 📊 Integration of analytics dashboard for tracking customer behavior.
-• 🧾 Admin panel for managing product listings and user interactions.
-• 💬 Automated email follow-up system.
+- ✅ Backend restructuring and deployment to production.
+- 📊 Integration of analytics dashboard for tracking customer behavior.
+- 🧾 Admin panel for managing product listings and user interactions.
+- 💬 Automated email follow-up system.
 
 ---
 
 ### 🌍 Deployment
 
-• Frontend: Hosted on [Vercel](https://advancetelecom.vercel.app/)
-• Backend: Deployment in progress (to be hosted on Render / Railway / AWS)
+- Frontend: Hosted on [Vercel](https://advancetelecom.vercel.app/)
+- Backend: Deployment in progress (to be hosted on Render / Railway / AWS)
