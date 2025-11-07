@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 import React, { useState } from "react";
-import PopularProduct from "../components/popular/PopularProduct";
+import PopularProduct from "../components/popular/popularProduct";
 import VideoDemo from "../components/demo/VideoDemo";
 import ReviewsCarousel from "../components/reviews/ReviewsCarousel";
 import WishlistModal from "../components/profile/WishlistModal";

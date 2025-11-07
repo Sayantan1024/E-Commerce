@@ -60,7 +60,7 @@ export default function Navbar({ onToggleProfile, showProfile }) {
         {/* Right Button */}
         <div className="flex items-center gap-4">
           <button
-            className="p-2 rounded-3xl border border-gray-300 dark:border-gray-500 dark:bg-gray-800 bg-gray-100 transition ease-in-out duration-700 hover:cursor-pointer"
+            className="p-2 rounded-3xl border border-gray-300 dark:border-gray-500 dark:bg-gray-800 bg-gray-100 transition ease-in-out duration-600 hover:cursor-pointer"
             onClick={toggleTheme}
           >
             {themeMode === "light" ? <Moon /> : <Sun color="#ffffff" />}
