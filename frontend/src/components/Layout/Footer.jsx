@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className=" text-gray-100 py-10 dark:bg-black">
       <hr className="mb-15 border-t border-gray-300 dark:border-gray-600 "></hr>
-      <div className="container mx-auto px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-10 md:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
         
         {/* Logo & Description */}
         <div>

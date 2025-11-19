@@ -18,6 +18,7 @@ function ContactUs() {
   }, []);
 
   const onSubmit = (data) => {
+    // TODO: Send to Backend via api
     console.log(data)
   }
 

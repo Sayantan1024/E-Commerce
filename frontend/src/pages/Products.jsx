@@ -1,133 +1,42 @@
 // src/pages/Products.jsx
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form"
+import {X} from "lucide-react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
-import SAT_17T_1 from "../assets/SAT_17T_1.jpeg"
-import SAT_17T_2 from "../assets/SAT_17T_2.jpg"
-import DVP_765_1 from "../assets/DVP_765_1.jpeg"
-import DVP_765_2 from "../assets/DVP_765_2.jpeg"
-import DVP_740D_1 from "../assets/DVP_740D_1.webp"
-import DVP_740D_2 from "../assets/DVP_740D_2.webp"
-import SAT_17K_1 from "../assets/SAT_17K_1.jpg"
-import SAT_17K_2 from "../assets/SAT_17K_2.jpg"
-import OPM from "../assets/OPM.jpg"
-import VFL from "../assets/VFL.jpg"
-import OPM_with_VFL_1 from "../assets/OPM_with_VFL_1.jpg"
-import OPM_with_VFL_2 from "../assets/OPM_with_VFL_2.jpg"
-import Siti_62 from "../assets/Siti_62.jpg"
+import {products} from "../data/products.js"
 import "../index.css"
+import useTheme from "../context/Theme";
 
 const categories = [
   { id: "splicing-machines", name: "Splicing Machines" },
-  { id: "otdr-devices", name: "OTDR Device" },
+  { id: "otdr-device", name: "OTDR Device" },
   { id: "power-meters", name: "Power Meter & VFL" },
   { id: "cleaving-tool", name: "Cleaver" },
 ];
 
-const products = {
-  "splicing-machines": [
-    {
-      id: 1,
-      name: "Aitelong-17T",
-      description:
-        "A high-precision fusion splicer designed for fast and reliable fiber optic splicing. It features an intuitive touch interface, quick splice time, and excellent alignment accuracy for field or lab use.",
-      features: ["Extremely low splice loss", "Battery 7800 mAh (250 splice with single charge)", "Works smoothly even in dusty areas"],
-      price: "₹1,40,000",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
-
-    },
-    {
-      id: 2,
-      name: "Aitelong-17K",
-      description:
-        "The Aitelong-17K combines portability with advanced splicing technology, perfect for technicians who need accuracy and endurance in the field.",
-      features: ["Extremely low splice loss", "Built in Power meter and VFL", "Battery 5200 mAh (170 splice with single charge)"],
-      price: "₹1,00,000",
-      images: [`${SAT_17K_1}`, `${SAT_17K_2}`]
-    },
-    {
-      id: 3,
-      name: "DVP-765",
-      description:
-        "Delivers stable and efficient core alignment splicing with a compact and rugged design. Ensures consistent splice quality with fast heating and user-friendly operation for professionals.",
-      features: ["Excellent in splitter joining", "Extremely powerful motors", "Battery 5200 mAh (170 splice with single charge)"],
-      price: "₹1,15,000",
-      images: [`${DVP_765_1}`, `${DVP_765_2}`]
-    },
-    {
-      id: 4,
-      name: "DVP-740D",
-      description:
-        "A durable and cost-effective splicing solution, this offers precise alignment and quick splice cycles. Ideal for maintenance and installation projects requiring dependable performance",
-      features: ["Excellent splitter joining", "Maintenance free operation", "Battery 5200 mAh (170 splice with single charge)"],
-      price: "₹90,000",
-      images: [`${DVP_740D_1}`, `${DVP_740D_2}`]
-    },
-  ],
-  "otdr-devices": [
-    {
-      id: 5,
-      name: "TT4500",
-      description:
-        "Compact and reliable optical testing device designed for accurate fiber link analysis, offering high-resolution trace results, fast measurement speeds, and an easy-to-use interface—ideal.",
-      features: ["Highly accurate", "Dynamic Range 26/24 dB", "Distance Range 100 km"],
-      price: "₹25,000",
-      images: [`${SAT_17T_1}`, `${SAT_17T_2}`]
-    }
-  ],
-  "power-meters": [
-    {
-      id: 6,
-      name: "Optical Power Meter",
-      description:
-        "Compact and accurate device for measuring optical signal strength across multiple wavelengths. Ideal for fiber network installation, maintenance, and troubleshooting with reliable performance.",
-      features: ["Power Range -50 to +26dbm", "Pencil Battery Operated"],
-      price: "₹1,200",
-      images: [`${OPM}`]
-    },
-    {
-      id: 7,
-      name: "Visual Fault Locator",
-      description:
-        "A handy pen-style tool to pinpoint fiber breaks, bends, or faults. Perfect for quick visual inspection and on-the-spot fiber testing in the field.",
-      features: ["Power Range -50 to +26dbm", "Range 10km", "Pencil Battery Operated"],
-      price: "₹500",
-      images: [`${VFL}`]
-    },
-    {
-      id: 8,
-      name: "OPM with built-in VFL",
-      description:
-        "A versatile 2-in-1 tool combining an Optical Power Meter and Visual Fault Locator for comprehensive fiber testing, ensures efficient measurement and fault detection in a single compact unit.",
-      features: ["Power Range -50 to +26dbm", "VFL Range 6km"],
-      price: "₹1,600",
-      images: [`${OPM_with_VFL_1}`, `${OPM_with_VFL_2}`]
-    }
-  ],
-  "cleaving-tool": [
-    {
-      id: 9,
-      description:
-        "High-precision fiber optic cleaver designed for effortless and accurate fiber preparation.",
-      features: ["Auto Return", "Auto Rotating Blade", "Blade life 48000 cutting"],
-      price: "₹4,800",
-      images: [`${Siti_62}`]
-    }
-  ]
-}
-
 export default function Products({ isLoggedIn }) {
+  const [modal, setModal] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState("")
+  const { register, handleSubmit } = useForm()
+  const {themeMode} = useTheme()
+
   const navigate = useNavigate();
 
-  // const handleInterest = (productId) => {
-  //   if (!isLoggedIn) {
-  //     navigate("/login");
-  //   } else {
-  //     alert(`You showed interest in product ID: ${productId}`);
-  //   }
-  // };
+  const handleEnquirySubmit = (data) => {
+    const enquiryData = {
+      ...data,
+      productName: selectedProduct,
+    };
+
+    console.log("Enquiry Submitted:", enquiryData);
+
+    // TODO: send to backend / email API
+
+    setModal(false);
+  };
 
   const settings = {
     dots: false,
@@ -169,11 +78,11 @@ export default function Products({ isLoggedIn }) {
                   <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-30 md:space-y-8">
                   {products[category.id]?.map((product) => (
                     <div
                       key={product.id}
-                      className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-15"
+                      className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-15"
                     >
                       {/* Left - Image */}
                       <div className="flex flex-col items-center">
@@ -198,7 +107,7 @@ export default function Products({ isLoggedIn }) {
                         </p>
                       </div>
                       {/* Right - Button */}
-                      <div className="md:col-span-2 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black rounded-xl p-13 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-80 dark:border-gray-600 dark:hover:shadow-blue-300">
+                      <div className="md:col-span-2 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 border border-gray-200 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black rounded-xl p-6 md:p-13 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-80 dark:border-gray-600 dark:hover:shadow-blue-300">
                         <div className="flex-1 space-y-4">
                           <div>
                             <h3 className="text-3xl font-bold text-foreground mb-2 dark:text-white">
@@ -228,13 +137,16 @@ export default function Products({ isLoggedIn }) {
                         {/* Actions */}
                         <div className="flex flex-col gap-4 lg:min-w-[200px]">
                           <button
-                            onClick={() => navigate('/contact')}
-                            className="bg-gradient-to-r from-green-600 to-green-400 border dark:border-slate-700 dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] dark:text-slate-200 p-5 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:-translate-y-1 dark:hover:shadow-cyan-900 rounded-2xl text-white font-semibold cursor-pointer"
+                            onClick={() => {
+                              setSelectedProduct(product.name);
+                              setModal(!modal)
+                            }}
+                            className="bg-gradient-to-r from-green-600 to-green-400 border dark:border-blue-500 dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] dark:text-slate-200 p-5 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:-translate-y-1 dark:hover:shadow-cyan-900 rounded-2xl text-white font-semibold cursor-pointer"
                           >
                             I'm Interested
                           </button>
                           <div className="text-center text-sm text-gray-500">
-                            {!isLoggedIn && "Contact required to show interest"}
+                            Contact required to show interest
                           </div>
                         </div>
                       </div>
@@ -246,6 +158,75 @@ export default function Products({ isLoggedIn }) {
           ))}
         </div>
 
+        {/* Modal for interest */}
+        {modal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
+            
+            {/* Modal Box */}
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl w-[90%] max-w-md p-8 border border-gray-300">
+              {/* Header */}
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+                  {selectedProduct === undefined ? "Interested ?" : `Interested in ${selectedProduct}?`}
+                </h2>
+                <button onClick={() => setModal(!modal)} className="hover:cursor-pointer">
+                  {themeMode === "light" ? <X /> : <X color="#ffffff" />}
+                </button>
+              </div>
+
+              {/* Subtext */}
+              <p className="text-gray-600 dark:text-gray-400 mb-4 md:mb-8">
+                Enter your details and we will get back to you shortly.
+              </p>
+
+              {/* Form */}
+              <form onSubmit={handleSubmit(handleEnquirySubmit)} className="space-y-3 md:space-y-6">
+
+                {/* Name */}
+                <div>
+                  <label className="block mb-1 font-semibold text-gray-700 dark:text-gray-300">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 dark:border-gray-700 rounded-xl p-3 
+                       focus:ring-2 focus:ring-green-500 dark:bg-gray-800 dark:text-white"
+                    placeholder="Enter your name"
+                    {...register("name", {
+                      required: true
+                    })}
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block mb-1 font-semibold text-gray-700 dark:text-gray-300">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full border border-gray-300 dark:border-gray-700 rounded-xl p-3 focus:ring-2 focus:ring-green-500 dark:bg-gray-800 dark:text-white"
+                    placeholder="Enter your phone number"
+                    {...register("phone", {
+                      required: true,
+                      maxLength: 10
+                    })}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-green-600 to-green-400 text-white rounded-xl p-3 font-semibold hover:scale-[1.02] transition-all dark:from-gray-700 dark:to-gray-600 dark:text-white mt-4"
+                >
+                  Submit Enquiry
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Need Help */}
         <section className="py-20 px-6 text-center mt-5">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-foreground mb-4 dark:text-white">
