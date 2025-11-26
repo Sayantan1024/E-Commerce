@@ -5,8 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "seed:products": "nodemon src/seed/productSeeder.js",
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    "start": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
   "author": "Sayantan",
   "license": "ISC",

@@ -16,35 +16,16 @@ const userSchema = new Schema(
             trim: true,
             required: true
         },
-        address: {
-            type: String,
-            trim: true,
-            // required: true
-        },
         phone: {
             type: Number,
             required: true
         },
-        role: {
-            type: String,
-            enum: ["customer", "client"],
-            required: true
-        },
         password: {
             type: String,
+            required: [true, 'Password is required']
         },
         refreshToken: {
             type: String
-        },
-        interestedProducts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Product"
-            }
-        ],
-        isVerified: {
-            type: Boolean,
-            default: false
         }
     }, 
     {timestamps: true}
@@ -53,7 +34,7 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password")) return next();
 
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 

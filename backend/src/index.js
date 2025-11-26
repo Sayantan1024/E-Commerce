@@ -16,10 +16,9 @@ connectDB()
     const existedClient = await User.findOne({email: process.env.CLIENT_EMAIL})
     if(!existedClient) {
         await User.create({
-            username: "Client",
+            username: "Partha Saha",
             email: process.env.CLIENT_EMAIL,
             phone: process.env.CLIENT_PHONE,
-            role: "client",
             password: process.env.CLIENT_PASSWORD
         })
         console.log("Client created successfully")
