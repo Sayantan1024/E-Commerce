@@ -19,10 +19,10 @@ const generateAccessAndRefreshToken = async (clientId) => {
 }
 
 const loginClient = asyncHandler( async (req, res) => {
-    const {username, email, phone, password} = req.body
+    const {username, email, password} = req.body
 
     if(
-        [username, email, phone, password].some((field) => field?.trim() === "")
+        [username, email, password].some((field) => field?.trim() === "")
     )
         throw new ApiError(400, "All fields are required")
 

@@ -18,7 +18,6 @@ connectDB()
         await User.create({
             username: "Partha Saha",
             email: process.env.CLIENT_EMAIL,
-            phone: process.env.CLIENT_PHONE,
             password: process.env.CLIENT_PASSWORD
         })
         console.log("Client created successfully")
