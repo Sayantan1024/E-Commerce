@@ -23,7 +23,7 @@ function ContactUs() {
   }
 
   return (
-    <section className="grid xl:grid-cols-2 items-center gap-10 py-12 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 bg-gradient-to-r dark:from-black dark:to-gray-900 overflow-hidden">
+    <section className="grid xl:grid-cols-2 items-center gap-10 py-12 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28  overflow-hidden">
       {/* Left Section */}
       <div className='flex flex-col gap-y-4 items-center md:items-start text-center md:text-left mt-25'>
         <h2 className="text-3xl md:text-5xl font-bold mb-2 dark:text-white">

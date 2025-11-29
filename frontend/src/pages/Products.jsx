@@ -1,14 +1,16 @@
 // src/pages/Products.jsx
 import React, { useState } from "react";
 import { useForm } from "react-hook-form"
-import {X} from "lucide-react"
+import { X } from "lucide-react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
-import {products} from "../data/products.js"
+import { products } from "../data/products.js"
 import "../index.css"
 import useTheme from "../context/Theme";
+import axios from "axios"
+import {toast} from "react-hot-toast"
 
 const categories = [
   { id: "splicing-machines", name: "Splicing Machines" },
@@ -21,21 +23,28 @@ export default function Products({ isLoggedIn }) {
   const [modal, setModal] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState("")
   const { register, handleSubmit } = useForm()
-  const {themeMode} = useTheme()
+  const { themeMode } = useTheme()
 
   const navigate = useNavigate();
 
-  const handleEnquirySubmit = (data) => {
-    const enquiryData = {
-      ...data,
-      productName: selectedProduct,
-    };
+  const handleEnquirySubmit = async (data) => {
+    try {
+      const enquiryData = {
+        customerName: data.name,
+        customerPhone: data.phone,
+        productName: selectedProduct,
+      };
 
-    console.log("Enquiry Submitted:", enquiryData);
+      //console.log("Enquiry Submitted:", enquiryData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/enquiry`, enquiryData)
 
-    // TODO: send to backend / email API
+      toast.success("Enquiry sent! Client will get back to you soon")
 
-    setModal(false);
+      setModal(false);
+
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Cannot submit enquiry with same details")
+    }
   };
 
   const settings = {
@@ -50,7 +59,7 @@ export default function Products({ isLoggedIn }) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen dark:bg-black">
+    <div className="flex flex-col min-h-screen">
       <main className="flex-grow p-6 xl:px-20 lg:px-0 mt-20">
         <section className="relative py-20 px-6 text-center">
           <div className="max-w-4xl mx-auto">
@@ -161,7 +170,7 @@ export default function Products({ isLoggedIn }) {
         {/* Modal for interest */}
         {modal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
-            
+
             {/* Modal Box */}
             <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl w-[90%] max-w-md p-8 border border-gray-300">
               {/* Header */}

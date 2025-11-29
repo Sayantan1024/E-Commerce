@@ -35,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col dark:bg-black ">
+    <div className="min-h-screen flex flex-col">
 
       <main className="container mx-auto py-8 flex-1 px-6 md:px-16 mt-10">
         {/* Popular product (hero) */}

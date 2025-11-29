@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProfileProvider } from "./context/ProfileContext";
+import { Toaster } from "react-hot-toast";
 
 // Pages
 import Landing from "./pages/Landing";
@@ -34,8 +35,9 @@ export default function App() {
   return (
     <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
       <ProfileProvider>
+        <Toaster position="top-right" />
         <Router>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen bg-gradient-to-r dark:from-black dark:to-gray-950">
             {/* Navbar on top */}
             <Navbar />
 
