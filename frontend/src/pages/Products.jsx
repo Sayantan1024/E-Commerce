@@ -36,7 +36,8 @@ export default function Products({ isLoggedIn }) {
       };
 
       //console.log("Enquiry Submitted:", enquiryData);
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/enquiry`, enquiryData)
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}enquiry`, enquiryData)
+      console.log(response.data)
 
       toast.success("Enquiry sent! Client will get back to you soon")
 
