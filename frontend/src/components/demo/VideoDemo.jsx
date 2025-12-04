@@ -19,7 +19,7 @@ export default function VideoDemo({ onGetDemo }) {
           <div className="relative aspect-video rounded-lg flex items-center justify-center">
             <video
               controls
-              className="w-full h-full object-cover rounded-3xl"
+              className="w-full h-64 md:h-full object-cover rounded-3xl"
               src={Demo}
             >
               Your browser does not support the video tag.

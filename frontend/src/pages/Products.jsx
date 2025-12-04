@@ -61,7 +61,7 @@ export default function Products({ isLoggedIn }) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-grow p-6 xl:px-20 lg:px-0 mt-20">
+      <main className="flex-grow p-3 xl:px-20 lg:px-0 mt-20">
         <section className="relative py-20 px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-cyan-600 to-emerald-500 bg-clip-text text-transparent mb-6">
